@@ -58,8 +58,8 @@ ARGUMENT       | DEFAULT | DESCRIPTION
 --alpha/-a     | 0.3     | Controls the clustering of mutations in the graph clustering phase: only arcs (v_j, v_k) with 0.5 - alpha <= min_p P(X_pj < X_pk) <= 0.5 + alpha  are considered
 --beta/-b      | 0.8     | Controls the confidence in ancestral relationships in the graph: there is an arc (v_j, v_k) if min_p P(X_pj < X_pk) >= beta
 --gamma/-g     | 0.01    | Controls the allowed pertubation of observed variant frequencies by defining (1 - gamma) confidence intervals 
---dot/-d       |         | DOT output filename for the clonal tree visualization
---sol/-s       | STDOUT  | Solution output filename
+--dot/-d       |         | DOT output filename (including full path) for the clonal tree visualization
+--sol/-s       | STDOUT  | Solution output filename (including full path)
 --time/-t      | -1      | ILP time limit in seconds, use -1 for no time limit
 --help/-h      |         | Shows usage instructions
 --version/-v   |         | Shows version number
@@ -67,7 +67,7 @@ read_count_file|         | Input file containing read counts
 
 ### Example
 
-To run AncesTree on patient CLL077_whole, do:
+To run AncesTree on patient CLL077_whole from the `build` directory do:
 
     ./ancestree ../data/real/CLL077_whole.txt --sol CLL077_whole.sol --dot CLL077_whole.dot
 
@@ -83,7 +83,7 @@ The clonal tree is indicated by the black solid edges whose weights correspond t
 
 ### Input format
 
-The [input](data/real/CLL077_whole.txt) is a tab-separated ASCII text file. The first line contains the sample headers. The first column contains gene ids. Then every consecutive pair of columns contains read counts for reference alleles and alternate alleles, respectively.
+The [input](data/real/CLL077_whole.txt) is a tab-separated ASCII text file. The first line contains the sample headers. The first column contains gene ids. Then every consecutive pair of columns contains read counts for reference alleles and alternate alleles, respectively. *Note that this order must be respected and the header label for alternate and reference counts for a single sample must be identical.*
 
 The following example defines a dataset consisting of 5 samples and 3 mutations. The number of reference reads for IRF4 in sample a is 36, whereas the number of variant reads for the same sample and mutation is 4. 
 
@@ -96,4 +96,4 @@ The following example defines a dataset consisting of 5 samples and 3 mutations.
 
 The first line in the [output](doc/CLL077_whole.sol) is the number of solutions followed by a blank line. Then the observed frequency matrix is output. This is done by first listing the number of rows and columns in separate lines. Subsequently every row of this matrix is output on a separate line with entries separated by spaces. The sample labels are then output, followed by the mutation labels. 
 
-For each solution we output the following. The usage matrix, the clonal matrix, the ancestral edge probabilities and the inferred frequency matrix. The last line lists the composition of the clusters. The clusters are separated by spaces. The mutation within each cluster are separated by `;` and are referred to using 0-based indices corresponding to the columns of the input frequency matrix.
+For each solution we output the following. The usage matrix *U*, the clonal matrix *B*, the ancestral edge probabilities (the i-th entry is the posterior probability of the unique incoming edge to the node corresponding to row i in B) and the inferred frequency matrix *F*. The last line lists the composition of the clusters. The clusters are separated by spaces. The mutations within each cluster are separated by `;` and are referred to using 0-based indices corresponding to the columns of the input frequency matrix.
