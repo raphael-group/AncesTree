@@ -14,7 +14,7 @@ AncesTree is written C++. In addition to a recent C++ compiler, it has the follo
 * [LEMON](http://lemon.cs.elte.hu/trac/lemon) graph library (>= 1.3)
 * [CPLEX](http://www.ibm.com/developerworks/downloads/ws/ilogcplex/) (>= 12.0)
 
-[Graphviz](http://www.graphviz.org) is required to visualize the resulting DOT files, but this library is not required for compilation.
+[Graphviz](http://www.graphviz.org) is required to visualize the resulting DOT files, but is not required for compilation.
 
 ## Compilation instructions
 
@@ -40,7 +40,7 @@ AncesTree can be run as follows:
 
     ./ancestree ../data/real/RK26.txt -sol RK26.sol -dot RK26.dot
 
-This will save the solution to `RK26.sol` and a GraphViz visualization of the clonal tree and its mixing in `RK26.dot`.
+This will save the solution to `RK26.sol` and a Graphviz visualization of the clonal tree and its mixing to `RK26.dot`. See below for details on the [input](#input) and [output](#output) format. 
 
 To obtain a PDF of the tree, run the following command:
 
