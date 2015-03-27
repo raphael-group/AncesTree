@@ -1,0 +1,48 @@
+graph G {
+	subgraph mixed {
+		s4 [colorscheme=paired10,penwidth=5,fontsize=60,color=5,shape=box,label="e"]
+		s3 [colorscheme=paired10,penwidth=5,fontsize=60,color=4,shape=box,label="d"]
+		s2 [colorscheme=paired10,penwidth=5,fontsize=60,color=3,shape=box,label="c"]
+		s1 [colorscheme=paired10,penwidth=5,fontsize=60,color=2,shape=box,label="b"]
+		s0 [colorscheme=paired10,penwidth=5,fontsize=60,color=1,shape=box,label="a"]
+	}
+	subgraph unmixed {
+		subgraph 0 {
+			rank=same
+			4 [penwidth=5,fontsize=35,label="IRF2BP2
+GPR158"]
+		}
+		subgraph leaves {
+			rank=same
+			3 [penwidth=5,fontsize=35,label="LRRC16A"]
+			2 [penwidth=5,fontsize=35,label="DDX1"]
+			1 [penwidth=5,fontsize=35,label="ZFHX4
+NOD1
+KLHDC2
+HMCN1
+COL24A1"]
+			0 [penwidth=5,fontsize=35,label="ZNF566"]
+			dup0 [penwidth=5,fontsize=35,label="IRF2BP2
+GPR158"]
+		}
+	}
+	4 -- 1 [penwidth=9.546516,fontsize=35,label=" 0.98"]
+	4 -- 2 [penwidth=9.47,fontsize=35,label=" 0.98"]
+	4 -- 3 [penwidth=8.41,fontsize=35,label=" 0.94"]
+	4 -- 0 [penwidth=9.71,fontsize=35,label=" 0.99"]
+	1 -- s4 [splines=none,colorscheme=paired10,color=5,minlen=4,fontsize=35,label=0.36,penwidth=13.97]
+	2 -- s4 [splines=none,colorscheme=paired10,color=5,minlen=4,fontsize=35,label=0.24,penwidth=10.99]
+	0 -- s4 [splines=none,colorscheme=paired10,color=5,minlen=4,fontsize=35,label=0.11,penwidth=7.81]
+	1 -- s3 [splines=none,colorscheme=paired10,color=4,minlen=4,fontsize=35,label=0.18,penwidth=9.55]
+	2 -- s3 [splines=none,colorscheme=paired10,color=4,minlen=4,fontsize=35,label=0.14,penwidth=8.45]
+	3 -- s3 [splines=none,colorscheme=paired10,color=4,minlen=4,fontsize=35,label=0.34,penwidth=13.54]
+	dup0 -- s3 [splines=none,colorscheme=paired10,color=4,minlen=4,fontsize=35,label=0.14,penwidth=8.47]
+	2 -- s2 [splines=none,colorscheme=paired10,color=3,minlen=4,fontsize=35,label=0.19,penwidth=9.65]
+	3 -- s2 [splines=none,colorscheme=paired10,color=3,minlen=4,fontsize=35,label=0.27,penwidth=11.67]
+	dup0 -- s2 [splines=none,colorscheme=paired10,color=3,minlen=4,fontsize=35,label=0.55,penwidth=18.66]
+	3 -- s1 [splines=none,colorscheme=paired10,color=2,minlen=4,fontsize=35,label=0.52,penwidth=17.90]
+	dup0 -- s1 [splines=none,colorscheme=paired10,color=2,minlen=4,fontsize=35,label=0.40,penwidth=14.99]
+	3 -- s0 [splines=none,colorscheme=paired10,color=1,minlen=4,fontsize=35,label=0.36,penwidth=13.93]
+	dup0 -- s0 [splines=none,colorscheme=paired10,color=1,minlen=4,fontsize=35,label=0.51,penwidth=17.69]
+	4 -- dup0 [penwidth=5,style=dashed]
+}

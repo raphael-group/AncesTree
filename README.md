@@ -36,26 +36,51 @@ In case CMake fails to detect either CPLEX or LEMON, run the following command w
 	
 ## Usage instructions
 
-AncesTree can be run as follows:
+The `ancestree` exectuable takes the following arguments as input:
 
-    ./ancestree ../data/real/RK26.txt -sol RK26.sol -dot RK26.dot
+	./ancestree [--alpha|-a num] [--beta|-b num] [--dot|-d str]
+	   [--gamma|-g num] [--help|-h|-help] [--sol|-s str] [--time|-t int]
+	   [--version|-v] read_count_file
+	   
+where
 
-This will save the solution to `RK26.sol` and a Graphviz visualization of the clonal tree and its mixing to `RK26.dot`. See below for details on the [input](#input-format) and [output](#output-format) format. 
+ARGUMENT       | DEFAULT | DESCRIPTION                                                
+---------------|---------|-------------------------------------------------------------
+--alpha/-a     | 0.3     | Controls the clustering of mutations in the graph clustering phase: only arcs (v_j, v_k) with 0.5 - alpha <= min_p P(X_pj < X_pk) <= 0.5 + alpha  are considered
+--beta/-b      | 0.8     | Controls the confidence in ancestral relationships in the graph: there is an arc (v_j, v_k) if min_p P(X_pj < X_pk) >= beta
+--gamma/-g     | 0.01    | Controls the allowed pertubation of observed variant frequencies by defining (1 - gamma) confidence intervals 
+--dot/-d       |         | DOT output filename for the clonal tree visualization
+--sol/-s       | STDOUT  | Solution output filename
+--time/-t      | -1      | ILP time limit in seconds, use -1 for no time limit
+--help/-h      |         | Shows usage instructions
+--version/-v   |         | Shows version number
+read_count_file|         | Input file containing read counts
 
-To obtain a PDF of the tree, run the following command:
+### Example
 
-    dot -Tpdf RK26.dot -o RK26.pdf
+To run AncesTree on patient RK26, do:
 
-### Parameters
+    ./ancestree ../data/real/CLL077_whole.txt --sol CLL077_whole.sol --dot CLL077_whole.dot
 
-        ========================================================================================
-        | PARAMETER NAME | DEFAULT | DESCRIPTION                                                |
-        ========================================================================================
-        | --alpha/-a     | 0.3     | Clustering value                                           |
-        ----------------------------------------------------------------------------------------
+This will save the solution to [CLL077_whole.sol](doc/CLL077_whole.sol) and a Graphviz visualization of the clonal tree and its mixing to [CLL077_whole.dot](doc/CLL077_whole.dot). See below for details on the [input](#input-format) and [output](#output-format) format. 
+
+To obtain a PNG of the tree, run the following command:
+
+    dot -Tpng CLL077_whole.dot -o CLL077_whole.png
+
+![CLL077_whole.png](doc/CLL077_whole.png)
 
 ### Input format
 
+The input is a tab-separated ASCII text file. The first line contains the sample headers. The first column contains gene ids. Then every consecutive pair of columns contains read counts for reference alleles and alternate alleles, respectively.
+
+	gene_id	a	a	b	b	c	c	d	d	e	e
+	C3orf43	16	13	28	17	35	24	21	22	30	33
+	CNOT7	29	17	27	22	21	24	25	22	15	24
+	IRF4	36	4	30	10	33	8	25	11	22	13
+
 ### Output format
+
+
 
 ### Benchmarking
