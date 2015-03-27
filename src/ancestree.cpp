@@ -31,24 +31,27 @@ int main(int argc, char** argv)
   std::string solOutput;
   std::string dotOutput;
   
-  ap.boolOption("version", "Show version number")
-    .synonym("v", "version")
-    .refOption("alpha", "Clustering parameter (default: 0.3)", alpha)
-    .synonym("a", "alpha")
-    .refOption("beta", "Ancestry parameter (default: 0.8)", beta)
-    .synonym("b", "beta")
-    .refOption("gamma", "Width of confidence interval (default: 0.01)", gamma)
-    .synonym("g", "gamma")
-    .refOption("sol", "Solution output filename (default: STDOUT)", solOutput)
-    .refOption("dot", "Tree DOT output filename (default: /dev/null)", dotOutput)
-    .refOption("time", "Time limit (default: -1, disabled)", timeLimit)
-    .synonym("t", "time")
+  ap.boolOption("-version", "Show version number")
+    .synonym("v", "-version")
+    .refOption("-alpha", "Clustering parameter (default: 0.3)", alpha)
+    .synonym("a", "-alpha")
+    .refOption("-beta", "Ancestry parameter (default: 0.8)", beta)
+    .synonym("b", "-beta")
+    .refOption("-gamma", "Width of confidence interval (default: 0.01)", gamma)
+    .synonym("g", "-gamma")
+    .refOption("-sol", "Solution output filename (default: STDOUT)", solOutput)
+    .synonym("s", "-sol")
+    .refOption("-dot", "Tree DOT output filename (default: /dev/null)", dotOutput)
+    .synonym("d", "-dot")
+    .refOption("-time", "Time limit (default: -1, disabled)", timeLimit)
+    .synonym("t", "-time")
     .other("read_count_file", "Read counts");
   ap.parse();
   
-  if (ap.given("version"))
+  if (ap.given("-version"))
   {
     std::cout << "Version number: " << ANCESTREE_VERSION << std::endl;
+    return 0;
   }
   
   if (ap.files().size() == 0)
