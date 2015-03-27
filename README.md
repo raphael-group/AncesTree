@@ -77,7 +77,7 @@ To obtain a PNG of the tree, run the following command:
 
     dot -Tpng CLL077_whole.dot -o CLL077_whole.png
 
-The clonal tree is indicated by the black solid edges whose weights correspond to the posterior probability of the ancestral relationship. Dashed edges are used to indicate ancestral clones which exist at the time of sequencing. The blocks labeled `a` through `e` each represent a sequenced sample, with colored edges indicating the inferred composition of clones and their fraction in each sample (only edges with usage at least 0.05 are shown).
+The clonal tree is indicated by the black solid edges whose weights correspond to the posterior probability of the ancestral relationship. Dashed edges are used to indicate ancestral clones which exist at the time of sequencing. The blocks labeled `a` through `e` each represent a sequenced sample, with colored edges indicating the inferred composition of clones and their fraction in each sample (only edges with a usage of at least 0.05 are shown).
 
 ![CLL077_whole.png](doc/CLL077_whole.png)
 
