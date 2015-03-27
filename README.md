@@ -68,11 +68,15 @@ To obtain a PNG of the tree, run the following command:
 
     dot -Tpng CLL077_whole.dot -o CLL077_whole.png
 
+The clonal tree is indicated by the black solid edges whose weights correspond to the posterior probability of the ancestral relationship. Dashed edges are used to indicate ancestral clones which exist at the time of sequencing. The blocks labeled `a` through `e` each represent a sequenced sample, with colored edges indicating the inferred composition of clones and their fraction in each sample (only edges with usage at least 0.05 are shown).
+
 ![CLL077_whole.png](doc/CLL077_whole.png)
 
 ### Input format
 
-The input is a tab-separated ASCII text file. The first line contains the sample headers. The first column contains gene ids. Then every consecutive pair of columns contains read counts for reference alleles and alternate alleles, respectively.
+The [input](data/real/CLL077_whole.txt) is a tab-separated ASCII text file. The first line contains the sample headers. The first column contains gene ids. Then every consecutive pair of columns contains read counts for reference alleles and alternate alleles, respectively.
+
+The following example defines a dataset consisting of 5 samples and 3 mutations. The number of reference reads for IRF4 in sample a is 36, whereas the number of variant reads for the same sample and mutation is 4. 
 
 	gene_id	a	a	b	b	c	c	d	d	e	e
 	C3orf43	16	13	28	17	35	24	21	22	30	33
@@ -81,6 +85,6 @@ The input is a tab-separated ASCII text file. The first line contains the sample
 
 ### Output format
 
+The first line in the [output](doc/CLL077_whole.sol) is the number of solutions followed by a blank line. Then the observed frequency matrix is output. This is done by first listing the number of rows and columns in separate lines. Subsequently every row of this matrix is output on a separate line with entries separated by spaces. The sample labels are then output, followed by the mutation labels. 
 
-
-### Benchmarking
+For each solution we output the following. The usage matrix, the clonal matrix, the ancestral edge probabilities and the inferred frequency matrix. The last line lists the composition of the clusters. The clusters are separated by spaces. The mutation within each cluster are separated by `;` and are referred to using 0-based indices corresponding to the columns of the input frequency matrix.
