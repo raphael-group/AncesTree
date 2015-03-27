@@ -10,7 +10,7 @@ For support using AncesTree, please visit the [AncesTree Google Group](https://g
 AncesTree is written C++. In addition to a recent C++ compiler, it has the following dependencies:
 
 * [CMake](http://www.cmake.org/) (>= 2.8)
-* [Boost](www.boost.org) (>= 1.38)
+* [Boost](http://www.boost.org) (>= 1.38)
 * [LEMON](http://lemon.cs.elte.hu/trac/lemon) graph library (>= 1.3)
 * [CPLEX](http://www.ibm.com/developerworks/downloads/ws/ilogcplex/) (>= 12.0)
 
