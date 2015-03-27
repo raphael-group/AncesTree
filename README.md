@@ -40,7 +40,7 @@ AncesTree can be run as follows:
 
     ./ancestree ../data/real/RK26.txt -sol RK26.sol -dot RK26.dot
 
-This will save the solution to `RK26.sol` and a Graphviz visualization of the clonal tree and its mixing to `RK26.dot`. See below for details on the [input](#input) and [output](#output) format. 
+This will save the solution to `RK26.sol` and a Graphviz visualization of the clonal tree and its mixing to `RK26.dot`. See below for details on the [input](#input-format) and [output](#output-format) format. 
 
 To obtain a PDF of the tree, run the following command:
 
