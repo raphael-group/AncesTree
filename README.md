@@ -34,6 +34,15 @@ In case CMake fails to detect either CPLEX or LEMON, run the following command w
 	-DCONCERT_LIB_DIR=~/ILOG/concert/lib/x86-64_osx/static_pic \
 	-DCONCERT_INC_DIR=~/ILOG/concert/include/ ..
 	
+The compilation results in the following files in `build` directory:
+
+* *ancestree*, which is the main executable and will be described in the following. 
+* analyse_solution
+* analyse_solution_prob
+* ancestree_ilp
+* construct_ancestry_matrix
+* visualize_solution 
+	
 ## Usage instructions
 
 The `ancestree` exectuable takes the following arguments as input:
@@ -58,7 +67,7 @@ read_count_file|         | Input file containing read counts
 
 ### Example
 
-To run AncesTree on patient RK26, do:
+To run AncesTree on patient CLL077_whole, do:
 
     ./ancestree ../data/real/CLL077_whole.txt --sol CLL077_whole.sol --dot CLL077_whole.dot
 
