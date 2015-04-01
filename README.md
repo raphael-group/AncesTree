@@ -45,7 +45,7 @@ The compilation results in the following files in `build` directory:
 	
 ## Usage instructions
 
-The `ancestree` exectuable takes the following arguments as input:
+The `ancestree` executable takes the following arguments as input:
 
 	./ancestree [--alpha|-a num] [--beta|-b num] [--dot|-d str]
 	   [--gamma|-g num] [--help|-h|-help] [--sol|-s str] [--time|-t int]

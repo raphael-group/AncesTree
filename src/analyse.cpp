@@ -44,7 +44,8 @@ void printUsage(const char* argv0, std::ostream& out)
          "                     16: coverage\n"
          "                     17: ancestry graph H\n"
          "                     18: sample alpha and output #clusters\n"
-         "                     19: sample beta (given alpha) and output #edges" << std::endl
+         "                     19: sample beta (given alpha) and output #edges\n"
+         "                     20: show (1-gamma) confidence intervals" << std::endl
       << "  <IDX>              SCC index" << std::endl;
 }
 
@@ -297,6 +298,10 @@ int main(int argc, char** argv)
         std::cout << "," << lemon::countArcs(HH.getG());
       }
       std::cout << std::endl;
+      break;
+    case 20:
+      std::cout << CI;
+      std::cout << newR;
       break;
     default:
       std::cerr << "Invalid type" << std::endl;
