@@ -12,7 +12,8 @@ AncesTree is written C++. In addition to a recent C++ compiler, it has the follo
 * [CMake](http://www.cmake.org/) (>= 2.8)
 * [Boost](http://www.boost.org) (>= 1.38)
 * [LEMON](http://lemon.cs.elte.hu/trac/lemon) graph library (>= 1.3)
-* [CPLEX](http://www.ibm.com/developerworks/downloads/ws/ilogcplex/) (>= 12.0)
+* [CPLEX](http://www.ibm.com/developerworks/downloads/ws/ilogcplex/) (>= 12.0)  
+	If you don't have CPLEX you can check out the [IBM Academic Initiative](http://www-304.ibm.com/ibm/university/academic/pub/page/academic_initiative) which will allow you to download the full CPLEX for free.
 
 [Graphviz](http://www.graphviz.org) is required to visualize the resulting DOT files, but is not required for compilation.
 
