@@ -13,6 +13,8 @@
 #include <algorithm>
 #include <stdexcept>
 #include <cassert>
+#include <string>
+#include <istream>
 #include <lemon/tolerance.h>
 
 namespace vaff {
@@ -46,6 +48,8 @@ std::istream& operator>>(std::istream& in, StlRealIntervalMatrix& M);
 StlBoolVector discretize(const StlDoubleVector& v);
 
 StlBoolMatrix discretize(const StlDoubleMatrix& M);
+  
+std::istream& getline(std::istream& is, std::string& t);
   
 extern lemon::Tolerance<double> g_tol;
   

@@ -6,6 +6,7 @@
  */
 
 #include "matrix.h"
+#include "utils.h"
 #include <sstream>
 #include <string>
 #include <boost/algorithm/string.hpp>
@@ -63,12 +64,12 @@ void Matrix::setLabels(std::istream& in)
 {
   _labelsSet = true;
   std::string line;
-  std::getline(in, line);
+  vaff::getline(in, line);
   
-  std::getline(in, line);
+  vaff::getline(in, line);
   setRowLabels(line);
   
-  std::getline(in, line);
+  vaff::getline(in, line);
   setColLabels(line);
 }
   

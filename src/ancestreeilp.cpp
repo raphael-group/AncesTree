@@ -98,13 +98,13 @@ bool readClustered(const std::string& filename,
   
   in >> F_interval_clustered;
   std::string line;
-  std::getline(in, line);
+  vaff::getline(in, line);
   
   const int n = F_interval_clustered.getNrCols();
   toUnclusteredColumns = StlIntMatrix(n);
   for (int i = 0; i < n; ++i)
   {
-    std::getline(in, line);
+    vaff::getline(in, line);
     std::stringstream ss(line);
     while (ss.good())
     {

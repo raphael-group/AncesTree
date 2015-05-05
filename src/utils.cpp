@@ -13,6 +13,40 @@ namespace vaff {
   
 lemon::Tolerance<double> g_tol(1e-6);
   
+inline std::istream& getline(std::istream& is, std::string& t)
+{
+  // copied from: http://stackoverflow.com/questions/6089231/getting-std-ifstream-to-handle-lf-cr-and-crlf
+  t.clear();
+  
+  // The characters in the stream are read one-by-one using a std::streambuf.
+  // That is faster than reading them one-by-one using the std::istream.
+  // Code that uses streambuf this way must be guarded by a sentry object.
+  // The sentry object performs various tasks,
+  // such as thread synchronization and updating the stream state.
+  
+  std::istream::sentry se(is, true);
+  std::streambuf* sb = is.rdbuf();
+  
+  for(;;) {
+    int c = sb->sbumpc();
+    switch (c) {
+      case '\n':
+        return is;
+      case '\r':
+        if(sb->sgetc() == '\n')
+          sb->sbumpc();
+        return is;
+      case EOF:
+        // Also handle the case when the last line has no line ending
+        if(t.empty())
+          is.setstate(std::ios::eofbit);
+        return is;
+      default:
+        t += (char)c;
+    }
+  }
+}
+  
 std::ostream& operator<<(std::ostream& out, const StlBoolMatrix& M)
 {
   int m = M.size();
@@ -38,7 +72,7 @@ std::istream& operator>>(std::istream& in, StlBoolMatrix& M)
   int m = -1, n = -1;
   
   std::string line;
-  std::getline(in, line);
+  vaff::getline(in, line);
   std::stringstream ss(line);
   ss >> m;
   
@@ -47,7 +81,7 @@ std::istream& operator>>(std::istream& in, StlBoolMatrix& M)
     throw std::runtime_error("Error: m should be nonnegative");
   }
   
-  std::getline(in, line);
+  vaff::getline(in, line);
   ss.clear();
   ss.str(line);
   ss >> n;
@@ -60,7 +94,7 @@ std::istream& operator>>(std::istream& in, StlBoolMatrix& M)
   M = StlBoolMatrix(m, StlBoolVector(n, false));
   for (int i = 0; i < m; ++i)
   {
-    std::getline(in, line);
+    vaff::getline(in, line);
     ss.clear();
     ss.str(line);
 
@@ -106,7 +140,7 @@ std::istream& operator>>(std::istream& in, StlDoubleMatrix& M)
   int m = -1, n = -1;
   
   std::string line;
-  std::getline(in, line);
+  vaff::getline(in, line);
   std::stringstream ss(line);
   ss >> m;
   
@@ -115,7 +149,7 @@ std::istream& operator>>(std::istream& in, StlDoubleMatrix& M)
     throw std::runtime_error("Error: m should be nonnegative");
   }
   
-  std::getline(in, line);
+  vaff::getline(in, line);
   ss.clear();
   ss.str(line);
   ss >> n;
@@ -128,7 +162,7 @@ std::istream& operator>>(std::istream& in, StlDoubleMatrix& M)
   M = StlDoubleMatrix(m, StlDoubleVector(n, 0));
   for (int i = 0; i < m; ++i)
   {
-    std::getline(in, line);
+    vaff::getline(in, line);
     ss.clear();
     ss.str(line);
     
@@ -180,7 +214,7 @@ std::istream& operator>>(std::istream& in, StlRealIntervalMatrix& M)
   int m = -1, n = -1;
   
   std::string line;
-  std::getline(in, line);
+  vaff::getline(in, line);
   std::stringstream ss(line);
   ss >> m;
   
@@ -189,7 +223,7 @@ std::istream& operator>>(std::istream& in, StlRealIntervalMatrix& M)
     throw std::runtime_error("Error: m should be nonnegative");
   }
   
-  std::getline(in, line);
+  vaff::getline(in, line);
   ss.clear();
   ss.str(line);
   ss >> n;
@@ -202,7 +236,7 @@ std::istream& operator>>(std::istream& in, StlRealIntervalMatrix& M)
   M = StlRealIntervalMatrix(m, StlRealIntervalVector(n));
   for (int i = 0; i < m; ++i)
   {
-    std::getline(in, line);
+    vaff::getline(in, line);
     ss.clear();
     ss.str(line);
     
@@ -213,11 +247,11 @@ std::istream& operator>>(std::istream& in, StlRealIntervalMatrix& M)
   }
   
   // skip blank line
-  std::getline(in, line);
+  vaff::getline(in, line);
   
   int m2 = -1, n2 = -1;
   
-  std::getline(in, line);
+  vaff::getline(in, line);
   ss.clear();
   ss.str(line);
   ss >> m2;
@@ -227,7 +261,7 @@ std::istream& operator>>(std::istream& in, StlRealIntervalMatrix& M)
     throw std::runtime_error("Error: m and m' should match");
   }
   
-  std::getline(in, line);
+  vaff::getline(in, line);
   ss.clear();
   ss.str(line);
   ss >> n2;
@@ -239,7 +273,7 @@ std::istream& operator>>(std::istream& in, StlRealIntervalMatrix& M)
   
   for (int i = 0; i < m; ++i)
   {
-    std::getline(in, line);
+    vaff::getline(in, line);
     ss.clear();
     ss.str(line);
     

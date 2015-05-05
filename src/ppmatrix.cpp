@@ -112,8 +112,8 @@ std::istream& operator>>(std::istream& in,
   matrix._prob = StlDoubleVector(matrix._m, 1);
   
   std::string line;
-  std::getline(in, line);
-  std::getline(in, line);
+  vaff::getline(in, line);
+  vaff::getline(in, line);
   std::stringstream ss(line);
   for (int j = 0; j < matrix._m; ++j)
   {

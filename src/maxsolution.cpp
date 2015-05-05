@@ -182,25 +182,25 @@ std::istream& operator>>(std::istream& in,
 {
   std::string line;
   
-  std::getline(in, line);
+  vaff::getline(in, line);
   std::stringstream ss(line);
   
   int size;
   ss >> size;
   
-  std::getline(in, line);
+  vaff::getline(in, line);
   
   in >> solution._F;
   solution._F.setLabels(in);
   
-  std::getline(in, line);
+  vaff::getline(in, line);
   
   for (int i = 0; i < size; ++i)
   {
     MaxSolution::Triple sol;
     in >> sol;
     solution.add(sol);
-    std::getline(in, line);
+    vaff::getline(in, line);
   }
   
   return in;

@@ -93,7 +93,7 @@ std::istream& operator>>(std::istream& in,
   typedef std::vector<std::string> StringVector;
 
   std::string line;
-  std::getline(in, line);
+  vaff::getline(in, line);
   
   StringVector s;
   boost::split(s, line, boost::is_any_of("\t"));
@@ -125,7 +125,7 @@ std::istream& operator>>(std::istream& in,
   matrix._rowLabel.clear();
   matrix._C.clear();
   matrix._D.clear();
-  while (std::getline(in, line).good() && line != "")
+  while (vaff::getline(in, line).good() && line != "")
   {
     boost::split(s, line, boost::is_any_of("\t"));
     
