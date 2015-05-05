@@ -33,6 +33,7 @@ void ReadCountMatrix::remapLabels(const StlIntMatrix& toOrgColumns,
   typedef std::vector<std::string> StringVector;
   typedef StringVector::const_iterator StringVectorIt;
   
+  char buf[1024];
   for (int j = 0; j < _m; ++j)
   {
     const StlIntVector& orgColumns = toOrgColumns[j];
@@ -56,7 +57,8 @@ void ReadCountMatrix::remapLabels(const StlIntMatrix& toOrgColumns,
     }
     if (count == max_cluster_size && orgColumns.size() > max_cluster_size)
     {
-      new_label += "\n...";
+      snprintf(buf, 1024, "\n[%d more]", (int)orgColumns.size() - max_cluster_size);
+      new_label += buf;
     }
     setRowLabel(j, new_label);
   }

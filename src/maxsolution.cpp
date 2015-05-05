@@ -115,6 +115,7 @@ void MaxSolution::remapLabels(int max_cluster_size = 10)
   typedef std::vector<std::string> StringVector;
   typedef StringVector::const_iterator StringVectorIt;
   
+  char buf[1024];
   for (TripleVectorNonConstIt it = _triples.begin(); it != _triples.end(); ++it)
   {
     Triple& sol = *it;
@@ -148,7 +149,8 @@ void MaxSolution::remapLabels(int max_cluster_size = 10)
       }
       if (count == max_cluster_size && s.size() > max_cluster_size)
       {
-        new_label += "\n...";
+        snprintf(buf, 1024, "\n[%d more]", (int)s.size() - max_cluster_size);
+        new_label += buf;
       }
       sol._F.setColLabel(j, new_label);
     }
