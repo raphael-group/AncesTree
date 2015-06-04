@@ -140,7 +140,7 @@ void MaxSolution::remapLabels(int max_cluster_size = 10)
           }
           else
           {
-            new_label += "\n";
+            new_label += "\\n";
           }
           StringVector s2 ;
           boost::split(s2, _F.getColLabel(org_j), boost::is_any_of(","));
@@ -149,7 +149,7 @@ void MaxSolution::remapLabels(int max_cluster_size = 10)
       }
       if (count == max_cluster_size && s.size() > max_cluster_size)
       {
-        snprintf(buf, 1024, "\n[%d more]", (int)s.size() - max_cluster_size);
+        snprintf(buf, 1024, "\\n[%d more]", (int)s.size() - max_cluster_size);
         new_label += buf;
       }
       sol._F.setColLabel(j, new_label);

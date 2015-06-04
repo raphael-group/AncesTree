@@ -49,7 +49,7 @@ void ReadCountMatrix::remapLabels(const StlIntMatrix& toOrgColumns,
       }
       else
       {
-        new_label += "\n";
+        new_label += "\\n";
       }
       StringVector s2 ;
       boost::split(s2, orgR.getRowLabel(org_j), boost::is_any_of(","));
@@ -57,7 +57,7 @@ void ReadCountMatrix::remapLabels(const StlIntMatrix& toOrgColumns,
     }
     if (count == max_cluster_size && orgColumns.size() > max_cluster_size)
     {
-      snprintf(buf, 1024, "\n[%d more]", (int)orgColumns.size() - max_cluster_size);
+      snprintf(buf, 1024, "\\n[%d more]", (int)orgColumns.size() - max_cluster_size);
       new_label += buf;
     }
     setRowLabel(j, new_label);
