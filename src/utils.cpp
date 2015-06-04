@@ -8,6 +8,7 @@
 #include "utils.h"
 #include <sstream>
 #include <string>
+#include <cstdio>       // EOF
 
 namespace vaff {
   
