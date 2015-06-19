@@ -71,6 +71,10 @@ int main(int argc, char** argv)
     in >> R;
     in.close();
   }
+  else
+  {
+    std::in >> R;
+  }
   
   AncestryMatrix A(R, 0);
   
