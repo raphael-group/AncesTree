@@ -89,6 +89,29 @@ set( visualize_solution_hdr
 	src/clonaltree.h
 )
 
+set( cluster_src
+	src/cluster.cpp
+	src/probancestrygraph.cpp
+	src/baseancestrygraph.cpp
+	src/ancestrymatrix.cpp
+	src/utils.cpp
+	src/matrix.cpp
+	src/readcountmatrix.cpp
+	src/realintervalmatrix.cpp
+	src/realmatrix.cpp
+)
+
+set( cluster_hdr
+	src/probancestrygraph.h
+	src/baseancestrygraph.h
+	src/ancestrymatrix.h
+	src/utils.h
+	src/matrix.h
+	src/readcountmatrix.h
+	src/realintervalmatrix.h
+	src/realmatrix.h
+)
+
 set( analyse_src
 	src/analyse.cpp
 	src/probancestrygraph.cpp
@@ -286,6 +309,9 @@ target_link_libraries( construct_ancestry_matrix ${CommonLibs} )
 
 add_executable( analyse EXCLUDE_FROM_ALL ${analyse_src} ${analyse_hdr} )
 target_link_libraries( analyse ${CommonLibs} )
+
+add_executable( cluster EXCLUDE_FROM_ALL ${cluster_src} ${cluster_hdr} )
+target_link_libraries( cluster ${CommonLibs} )
 
 add_executable( ancestree_ilp ${ancestree_ilp_src} ${ancestree_ilp_hdr} )
 target_link_libraries( ancestree_ilp ${CommonLibs} )

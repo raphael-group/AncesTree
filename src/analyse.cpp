@@ -19,8 +19,8 @@ using namespace vaff;
 void printUsage(const char* argv0, std::ostream& out)
 {
   out << "Usage: " << argv0 << " <READ_COUNTS> <ANCESTRY_MATRIX> <ALPHA> <BETA> <GAMMA> <TYPE> (<IDX>) where" << std::endl
-      << "  <READ_COUNTS>      is the ancestry matrix file" << std::endl
-      << "  <ANCESTRY_MATRIX>  is the read count matrix file" << std::endl
+      << "  <READ_COUNTS>      is the read count matrix file" << std::endl
+      << "  <ANCESTRY_MATRIX>  is the ancestry matrix file" << std::endl
       << "  <ALPHA>            alpha parameter (ancestry)" << std::endl
       << "  <BETA>             beta parameter (equality)" << std::endl
       << "  <GAMMA>            gamma parameter (CI)" << std::endl
