@@ -26,6 +26,12 @@ To compile AncesTree, execute the following commands from the root of the reposi
     cmake ..
     make
     
+Note: On Mac OS >= 10.9, you have to ensure that LEMON is linked against the old C++ standard library by editing LEMON's `CMakeLists.txt` file as follows.
+
+	if( ${CMAKE_SYSTEM_NAME} MATCHES "Darwin" )
+	  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libstdc++ " )
+	endif()
+    
 In case CMake fails to detect either CPLEX or LEMON, run the following command with adjusted paths:
 
 	cmake \
