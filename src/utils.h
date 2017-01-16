@@ -16,6 +16,10 @@
 #include <string>
 #include <istream>
 #include <lemon/tolerance.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdarg.h>
+#include <math.h>
 
 namespace vaff {
 
