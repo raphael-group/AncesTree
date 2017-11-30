@@ -12,7 +12,7 @@ AncesTree is written C++. In addition to a recent C++ compiler, it has the follo
 * [CMake](http://www.cmake.org/) (>= 2.8)
 * [Boost](http://www.boost.org) (>= 1.38)
 * [LEMON](http://lemon.cs.elte.hu/trac/lemon) graph library (>= 1.3)
-* [CPLEX](http://www.ibm.com/developerworks/downloads/ws/ilogcplex/) (>= 12.0)  
+* [CPLEX](http://www.ibm.com/developerworks/downloads/ws/ilogcplex/) (>= 12.7)
 	If you don't have CPLEX you can check out the [IBM Academic Initiative](http://www-304.ibm.com/ibm/university/academic/pub/page/academic_initiative) which will allow you to download the full CPLEX for free.
 
 [Graphviz](http://www.graphviz.org) is required to visualize the resulting DOT files, but is not required for compilation.
@@ -25,12 +25,6 @@ To compile AncesTree, execute the following commands from the root of the reposi
     cd build
     cmake ..
     make
-    
-Note: On Mac OS >= 10.9, you have to ensure that LEMON is linked against the old C++ standard library by editing LEMON's `CMakeLists.txt` file as follows.
-
-	if( ${CMAKE_SYSTEM_NAME} MATCHES "Darwin" )
-	  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libstdc++ " )
-	endif()
     
 In case CMake fails to detect either CPLEX or LEMON, run the following command with adjusted paths:
 
