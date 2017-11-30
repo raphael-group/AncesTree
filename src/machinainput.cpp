@@ -1,7 +1,7 @@
 /*
- *  visualizesolution.cpp
+ *  machinainput.cpp
  *
- *   Created on: 4-jan-2015
+ *   Created on: 30-nov-2017
  *       Author: M. El-Kebir
  */
 
@@ -19,13 +19,13 @@ void printUsage(const char* argv0, std::ostream& out)
       << "  <SOLUTION_IDX>  is the solution index" << std::endl
       << "  <SOLUTION>      is the solution file, specify '-' to use stdin" << std::endl
       << "  <THRESHOLD>     usage threshold"  << std::endl
-      << "  <CLUSTER_SIZE>  max cluster size" << std::endl
-  << "  <BETA>          beta" << std::endl;
+      << "  <BETA>          beta" << std::endl;
 }
+
 
 int main(int argc, char** argv)
 {
-  if (argc != 6)
+  if (argc != 5)
   {
     printUsage(argv[0], std::cerr);
     return 1;
@@ -42,10 +42,8 @@ int main(int argc, char** argv)
     return 1;
   }
   
-  int max_cluster_size = atoi(argv[4]);
-  
   double beta = -1;
-  sscanf(argv[5], "%lf", &beta);
+  sscanf(argv[4], "%lf", &beta);
   if (!(0.5 <= beta && beta <= 1))
   {
     std::cerr << "Error: beta must be in [0.5,1]" << std::endl;
@@ -59,7 +57,7 @@ int main(int argc, char** argv)
     std::ifstream in(filename.c_str());
     if (!in.good())
     {
-      std::cerr << "Error: failed to open '" << filename << "' for reading" << std::endl;
+      std::cerr << "Error: failed to open '" << argv[2] << "' for reading" << std::endl;
       return 1;
     }
     in >> solution;
@@ -70,15 +68,10 @@ int main(int argc, char** argv)
     std::cin >> solution;
   }
   
-  if (!(0 <= sol_idx && sol_idx < solution.size()))
-  {
-    std::cerr << "Invalid solution index " << sol_idx << "; it must be in the range [0, " << solution.size() << ")" << std::endl;
-    return 1;
-  }
-  
-  solution.remapLabels(max_cluster_size);
+  solution.remapLabels(-1);
   SolutionGraph graph(solution.solution(sol_idx), threshold, beta);
-  graph.writeDOT(std::cout);
+  graph.writeEdgeList(std::cout);
+  graph.writeLeaves(std::cerr);
   
   return 0;
 }

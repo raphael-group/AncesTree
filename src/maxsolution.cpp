@@ -129,7 +129,8 @@ void MaxSolution::remapLabels(int max_cluster_size = 10)
       std::string new_label = "";
       bool first = true;
       int count = 0;
-      for (StringVectorIt it2 = s.begin(); it2 != s.end() && count < max_cluster_size; ++it2, ++count)
+      for (StringVectorIt it2 = s.begin(); it2 != s.end()
+           && (count < max_cluster_size || max_cluster_size == -1); ++it2, ++count)
       {
         if (*it2 != "")
         {

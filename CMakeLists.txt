@@ -68,6 +68,27 @@ set( analyse_solution_src
 	src/comparison.cpp
 )
 
+set( generate_machina_input_src
+	src/machinainput.cpp
+	src/utils.cpp
+	src/matrix.cpp
+	src/ppmatrix.cpp
+	src/realmatrix.cpp
+	src/maxsolution.cpp
+	src/solutiongraph.cpp
+	src/clonaltree.cpp
+)
+
+set( generate_machina_input_hdr
+	src/utils.h
+	src/matrix.h
+	src/ppmatrix.h
+	src/realmatrix.h
+	src/maxsolution.h
+	src/solutiongraph.h
+	src/clonaltree.h
+)
+
 set( visualize_solution_src
 	src/visualizesolution.cpp
 	src/utils.cpp
@@ -295,6 +316,9 @@ target_link_libraries( analyse_solution ${CommonLibs} )
 
 add_executable( analyse_solution_prob ${analyse_solution_prob_src} ${analyse_solution_prob_hdr} )
 target_link_libraries( analyse_solution_prob ${CommonLibs} )
+
+add_executable( generate_machina_input ${generate_machina_input_src} ${generate_machina_input_hdr} )
+target_link_libraries( generate_machina_input ${CommonLibs} )
 
 add_executable( visualize_solution ${visualize_solution_src} ${visualize_solution_hdr} )
 target_link_libraries( visualize_solution ${CommonLibs} )

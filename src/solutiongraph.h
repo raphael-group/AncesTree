@@ -45,6 +45,10 @@ public:
   {
     return _G;
   }
+  
+  void writeEdgeList(std::ostream& out) const;
+  
+  void writeLeaves(std::ostream& out) const;
     
 private:
   typedef std::vector<Node> NodeVector;

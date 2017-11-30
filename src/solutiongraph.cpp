@@ -119,6 +119,48 @@ void SolutionGraph::constructMixingGraph()
     }
   }
 }
+  
+void SolutionGraph::writeEdgeList(std::ostream& out) const
+{
+  for (ArcIt a(_sol._T.getT()); a != lemon::INVALID; ++a)
+  {
+    Node u = _sol._T.getT().source(a);
+    Node v = _sol._T.getT().target(a);
+
+    out << _sol._F.getColLabel(_sol._T.nodeToMutation(u)) << " "
+        << _sol._F.getColLabel(_sol._T.nodeToMutation(v)) << std::endl;
+  }
+  
+  for (BpEdgeIt e(_G); e != lemon::INVALID; ++e)
+  {
+    assert(_G.valid(e));
+    if (_mixingFraction[e] < _threshold)
+      continue;
+    
+    BpBlueNode v = _G.blueNode(e);
+    BpRedNode u = _G.redNode(e);
+    Node vv = _toTree[v];
+    out << _sol._F.getColLabel(_sol._T.nodeToMutation(vv)) << " "
+        << _sol._F.getColLabel(_sol._T.nodeToMutation(vv)) << "_"
+        << _sol._F.getRowLabel(_bpNodeToRow[u]) << std::endl;
+  }
+}
+  
+void SolutionGraph::writeLeaves(std::ostream& out) const
+{
+  for (BpEdgeIt e(_G); e != lemon::INVALID; ++e)
+  {
+    assert(_G.valid(e));
+    if (_mixingFraction[e] < _threshold)
+      continue;
+    
+    BpBlueNode v = _G.blueNode(e);
+    BpRedNode u = _G.redNode(e);
+    Node vv = _toTree[v];
+    out << _sol._F.getColLabel(_sol._T.nodeToMutation(vv)) << "_"
+        << _sol._F.getRowLabel(_bpNodeToRow[u]) << std::endl;
+  }
+}
 
 void SolutionGraph::writeDOT(std::ostream& out) const
 {
