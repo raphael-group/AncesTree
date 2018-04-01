@@ -309,6 +309,7 @@ set( CommonLibs
 	concert
 	pthread
 	emon
+	dl
 )
 
 add_executable( analyse_solution ${analyse_solution_src} ${analyse_solution_hdr} )
